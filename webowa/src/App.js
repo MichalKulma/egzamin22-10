@@ -9,6 +9,18 @@ import { useState } from 'react';
 function App() {
 
   const [isChecked, setIsChecked] = useState(true)
+  const [adress, setAdress] = useState("")
+  const [login, setLogin] = useState("")
+  const [password, setPassword] = useState("")
+  const [newAdress, setNewAdress] = useState("")
+  const [newLogin, setNewLogin] = useState("")
+  const [newPassword, setNewPassword] = useState("")
+
+  const submit = ()=>{
+    setAdress(newAdress)
+    setLogin(newLogin)
+    setPassword(newPassword)
+  }
 
   return (
     <div>
@@ -18,17 +30,17 @@ function App() {
         <FormGroup>
 
         <Form.Label>Adres WWW:</Form.Label>
-        <Form.Control type='text' placeholder='Adres strony WWW'/>
+        <Form.Control onChange={(e)=>{setNewAdress(e.target.value)}} type='text' placeholder='Adres strony WWW'/>
         </FormGroup>
         <FormGroup>
 
         <Form.Label>Login:</Form.Label>
-        <Form.Control type='text' placeholder='Twój login'/>
+        <Form.Control onChange={(e)=>{setNewLogin(e.target.value)}} type='text' placeholder='Twój login'/>
         </FormGroup>
 
         <div style={{'display': 'flex', 'flexDirection': 'row', 'gap': '5px'}}>
         <FormGroup>
-        <Form.Check checked={isChecked ? true : false} onClick={()=>{setIsChecked(!isChecked)}}/>
+        <Form.Check checked={isChecked ? true : false} onChange={()=>{setIsChecked(!isChecked)}}/>
         <Form.Label>Wygeneruj hasło</Form.Label>
         </FormGroup>
         </div>
@@ -36,15 +48,19 @@ function App() {
         <FormGroup>
 
         <Form.Label>Hasło:</Form.Label>
-        <Form.Control disabled={isChecked ? true : false} type='password'/>
+        <Form.Control onChange={(e)=>{setNewPassword(e.target.value)}} disabled={isChecked ? true : false} type='password'/>
         </FormGroup>
-        <Button className='btn-primary' variant='primary' type='submit'>Zapisz</Button>
+        <Button onClick={submit} className='btn-primary' variant='primary'>Zapisz</Button>
       </Form>
     <div>
 
     </div>
 
     <div>
+
+      <p>Adres: {adress}</p>
+      <p>Login: {login}</p>
+      <p>{isChecked ? "Hasło generowane automatycznie" : "Hasło: " + password}</p>
 
     </div>
 

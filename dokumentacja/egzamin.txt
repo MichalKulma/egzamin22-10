@@ -3,3 +3,8 @@ konsolowa:
 System operacyjny: Windows 11
 Środowisko programistyczne: Visual Studio
 Język programowania: C#
+
+webowa:
+System operacyjny: Windows 11
+Środowisko programistyczne: Visual Studio Code
+Język programowania: JavaScript (biblioteka React.js)
